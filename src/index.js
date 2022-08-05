@@ -54,7 +54,7 @@ window.addEventListener('load', (event) => {
 
       if (memoryGame.pickedCards.length === 2){
          setTimeout(() => {card.classList.remove(`turned`)},3000)
-         document.querySelectorAll(`div[${memoryGame.pickedCards[0]}]`).forEach((cardz) => {setTimeout(() => {cardz.classList.remove(`turned`)},3000)})
+        //  document.querySelectorAll(`div[${memoryGame.pickedCards[0]}]`).forEach((cardz) => {setTimeout(() => {cardz.classList.remove(`turned`)},3000)}) -- NEED TO FIX THIS
       }
       // console.log(memoryGame.pickedCards)
     });
