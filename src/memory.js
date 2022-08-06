@@ -29,7 +29,7 @@ class MemoryGame {
   }
 
   checkIfFinished() {
-    if (this.pairsGuessed === 1){
+    if (this.pairsGuessed === 12){
       lockBoard = true
       // return alert(`YOU WON!!!!!`)
       document.getElementById(`modal`).style.display = `block`

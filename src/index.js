@@ -39,14 +39,17 @@ window.addEventListener('load', (event) => {
   let html = '';
   memoryGame.cards.forEach((pic) => {
     html += `
-      <div class="card" data-card-name="${pic.name}">
+      <div class="card turned" data-card-name="${pic.name}">
       <div class="back" name="${pic.img}"></div>
         <div class="front" style="background: url('./img/${pic.img}') no-repeat"></div>
       </div>
     `;
   });
 
-
+  setTimeout(() => {
+    document.querySelectorAll('.card').forEach((card) =>
+    card.classList.remove(`turned`)
+  )}, 2000);
 
   // Add all the divs to the HTML
   document.querySelector('#memory-board').innerHTML = html;
