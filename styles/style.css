@@ -88,3 +88,73 @@ p {
   font-size: 20px;
   text-align: center;
 }
+
+#modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+h3{
+  color: white;
+  font-size: 50px;
+  font-family: 'Lexend Exa', sans-serif;
+}
+
+#modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  background-color: green;
+  margin: 20% auto; /* 15% from the top and centered */
+  padding: 100px;
+  border: 2px solid darkgreen;
+  width: 20%; /* Could be more or less, depending on screen size */
+  border-radius: 84px;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+
+}
+
+.close {
+  color: #aaa;
+  text-align: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.appear #modal-content{
+  animation-name: appear;
+  animation-timing-function: ease;
+}
+@keyframes appear{
+  0%  { transform: scale(0) translateY(0); }
+  50%  { transform: scale(.9,1.1) translateY(0); }
+  100% { transform: scale(1,1)    translateY(0); }
+}
+
+.appear #modal-content.hold{
+  animation-name: hold;
+  animation-timing-function: ease;
+}
+@keyframes hold{
+  0%  { transform: scale(1,1) translateY(0); }
+  50%  { transform: scale(.9,1.1) translateY(0); }
+  100% { transform: scale(1,1)    translateY(0); }
+}

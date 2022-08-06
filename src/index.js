@@ -1,3 +1,8 @@
+// Variables
+let firstCard;
+let lockBoard = false;
+
+
 const cards = [
   { name: 'aquaman', img: 'aquaman.jpg' },
   { name: 'batman', img: 'batman.jpg' },
@@ -46,17 +51,37 @@ window.addEventListener('load', (event) => {
   // Add all the divs to the HTML
   document.querySelector('#memory-board').innerHTML = html;
 
+
   // Bind the click event of each element to a function
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
+
+      if (lockBoard || card.classList.contains(`turned`)) {
+        return
+      }
+
       memoryGame.pickedCards.push(card.getAttribute("data-card-name"))
       card.classList.add(`turned`)
 
-      if (memoryGame.pickedCards.length === 2){
-         setTimeout(() => {card.classList.remove(`turned`)},3000)
-         document.querySelectorAll(`div[${memoryGame.pickedCards[0]}]`).forEach((cardz) => {setTimeout(() => {cardz.classList.remove(`turned`)},3000)})
+      if(memoryGame.pickedCards.length === 1){
+          firstCard = card
+      }else if (memoryGame.pickedCards.length === 2){
+        lockBoard = true;
+        if (memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1])){
+          lockBoard = false;
+        } else {
+         setTimeout(() => {card.classList.remove(`turned`), firstCard.classList.remove(`turned`), lockBoard=false;},1000);
+        }
+         document.getElementById(`pairs-clicked`).innerHTML = memoryGame.pairsClicked;
+         document.getElementById(`pairs-guessed`).innerHTML = memoryGame.pairsGuessed;
+         memoryGame.pickedCards = [];
+         memoryGame.checkIfFinished();
       }
       // console.log(memoryGame.pickedCards)
     });
   });
 });
+
+document.getElementsByClassName(`close`)[0].addEventListener(`click`,() => {
+  document.getElementById(`modal`).style.display = `none`
+})
