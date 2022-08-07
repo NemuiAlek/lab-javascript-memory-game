@@ -97,13 +97,6 @@ window.addEventListener(`keydown`,(event) => {
   } else {
     konamiArray = [];
   }
-  console.log(konamiArray[0])
-  console.log(konamiArray[1])
-  console.log(konamiArray[2])
-  console.log(konamiArray[3])
-  console.log(konamiArray[4])
-  console.log(konamiArray[5])
-  console.log(konamiArray[6])
 
   if(
     konamiArray[0] === `ArrowUp` &&
@@ -117,7 +110,7 @@ window.addEventListener(`keydown`,(event) => {
     konamiArray[8] === `KeyB` &&
     konamiArray[9] === `KeyA`
     ){
-      console.log(`success!!`);
+      // console.log(`success!!`);
     memoryGame.pairsGuessed = 12;
     memoryGame.checkIfFinished();
   }
